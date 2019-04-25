@@ -39,7 +39,14 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             
         }
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let juego = juegos[indexPath.row]
+        performSegue(withIdentifier: "se", sender: juego)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let siguientVC = segue.destination as! JuegosViewController
+        siguientVC.juego = sender as? Juego
+    }
 
 }
 
